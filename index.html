@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Suzuki Marketing - Buana Indomobil Trada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 0;
+        }
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #e11d1d;
+        }
+        .logo span {
+            color: #333;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #374151;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #e11d1d;
+        }
+        .btn-wa-nav {
+            background: #25D366;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0b2b26 0%, #1a4a44 100%);
+            color: white;
+            padding: 80px 0;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .btn-primary {
+            background-color: #e11d1d;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            background-color: #2d5a4c;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .hero-image span {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #e11d1d;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 30px;
+        }
+        .car-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .car-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 30px rgba(0,0,0,0.1);
+        }
+        .car-img {
+            width: 100%;
+            height: 180px;
+            background-color: #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1f2937;
+        }
+        .car-info {
+            padding: 20px;
+        }
+        .car-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .car-price {
+            color: #e11d1d;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .car-desc {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .btn-detail {
+            background: none;
+            border: 1px solid #e11d1d;
+            color: #e11d1d;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-detail:hover {
+            background: #e11d1d;
+            color: white;
+        }
+        .brosur-wrapper {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        .flex-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e11d1d;
+            color: #e11d1d;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: #e11d1d;
+            color: white;
+        }
+        .price-table {
+            margin-top: 30px;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 20px;
+            overflow-x: auto;
+        }
+        .price-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .price-table th, .price-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .price-table th {
+            background: #e5e7eb;
+        }
+        .configurator {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            font-family: inherit;
+        }
+        .config-result {
+            margin-top: 25px;
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .total-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #e11d1d;
+        }
+        .btn-wa-config {
+            background: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            border: none;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .konsultasi-section {
+            background: linear-gradient(110deg, #fef2f2 0%, #fff 100%);
+            border-radius: 30px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        .wa-big-btn {
+            background: #25D366;
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.3rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            transition: 0.2s;
+        }
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2rem; }
+            .nav-flex { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 18px; flex-wrap: wrap; justify-content: center; }
+            .section-title { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">SUZUKI<span> Buana Indomobil</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#cars">Mobil</a></li>
+            <li><a href="#brosur">Brosur & Harga</a></li>
+            <li><a href="#config">Konfigurasi</a></li>
+            <li><a href="#konsultasi">Konsultasi</a></li>
+        </ul>
+        <a href="https://wa.me/6282331723917?text=Halo%20kak%2C%20saya%20tertarik%20dengan%20mobil%20Suzuki" class="btn-wa-nav" target="_blank">💬 Chat WA</a>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <h1>Suzuki <span style="color:#facc15;">Buana Indomobil</span><br>Melayani Seluruh Jawa Timur</h1>
+            <p>Dapatkan promo spesial, cicilan ringan, dan free servis berkala. Konsultasi gratis dengan marketing profesional.</p>
+            <a href="#konsultasi" class="btn-primary">Konsultasi Sekarang →</a>
+        </div>
+        <div class="hero-image">
+            <span>🚗 Suzuki Car</span>
+        </div>
+    </div>
+</section>
+
+<section id="cars" class="section">
+    <div class="container">
+        <h2 class="section-title">Pilihan Mobil Suzuki Terbaru</h2>
+        <div class="car-grid">
+            <!-- 6 mobil hardcode seperti sebelumnya, tapi dengan teks gambar -->
+            <div class="car-card">
+                <div class="car-img">New Carry</div>
+                <div class="car-info">
+                    <div class="car-title">New Carry</div>
+                    <div class="car-price">Rp 201,5 Juta</div>
+                    <div class="car-desc">FD AC PS Manual - Pickup tangguh untuk bisnis</div>
+                    <button class="btn-detail" data-model="New Carry">Detail & Test Drive</button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">S-Presso</div>
+                <div class="car-info">
+                    <div class="car-title">S-Presso</div>
+                    <div class="car-price">Rp 202 Juta</div>
+                    <div class="car-desc">AGS Matic - City car irit & lincah</div>
+                    <button class="btn-detail" data-model="S-Presso">Detail & Test Drive</button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">Ertiga</div>
+                <div class="car-info">
+                    <div class="car-title">Ertiga GX Hybrid</div>
+                    <div class="car-price">Rp 291 Juta</div>
+                    <div class="car-desc">Matic - MPV 7 kursi hybrid irit BBM</div>
+                    <button class="btn-detail" data-model="Ertiga GX Hybrid">Detail & Test Drive</button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">Ertiga GL</div>
+                <div class="car-info">
+                    <div class="car-title">Ertiga GL</div>
+                    <div class="car-price">Rp 274 Juta</div>
+                    <div class="car-desc">Manual - Keluarga Indonesia pilihan</div>
+                    <button class="btn-detail" data-model="Ertiga GL">Detail & Test Drive</button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">XL7</div>
+                <div class="car-info">
+                    <div class="car-title">XL7 Alpha Hybrid</div>
+                    <div class="car-price">Rp 335,5 Juta</div>
+                    <div class="car-desc">SUV mewah hybrid dengan desain modern</div>
+                    <button class="btn-detail" data-model="XL7 Alpha Hybrid">Detail & Test Drive</button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">Grand Vitara</div>
+                <div class="car-info">
+                    <div class="car-title">Grand Vitara GLX Hybrid</div>
+                    <div class="car-price">Rp 433,75 Juta</div>
+                    <div class="car-desc">Premium SUV tangguh hybrid</div>
+                    <button class="btn-detail" data-model="Grand Vitara GLX Hybrid">Detail & Test Drive</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="brosur" class="section">
+    <div class="container">
+        <div class="brosur-wrapper">
+            <h2 style="margin-bottom: 15px;">📄 Brosur & Pricelist Resmi</h2>
+            <p>Download brosur lengkap atau lihat daftar harga OTR Jawa Timur (Mei 2026).</p>
+            <div class="flex-buttons">
+                <a href="#" class="btn-outline" id="downloadBrochureBtn">📥 Download Brosur PDF</a>
+                <button class="btn-outline" id="showPriceListBtn">🏷️ Lihat Pricelist</button>
+            </div>
+            <div id="priceListContainer" style="display: none;" class="price-table">
+                <h3>Harga OTR Jawa Timur - Mei 2026</h3>
+                <p>Dealer Suzuki Buana Indomobil Trada - Kenjeran, Surabaya</p>
+                <table>
+                    <thead><tr><th>Model</th><th>Varian</th><th>Harga (Rp)</th></tr></thead>
+                    <tbody>
+                        <tr><td>New Carry</td><td>FD AC PS (Manual)</td><td>201.500.000</td></tr>
+                        <tr><td>S-Presso</td><td>AGS Matic</td><td>202.000.000</td></tr>
+                        <tr><td>Ertiga</td><td>GX Hybrid (Matic)</td><td>291.000.000</td></tr>
+                        <tr><td>Ertiga</td><td>GL (Manual)</td><td>274.000.000</td></tr>
+                        <tr><td>XL7</td><td>Alpha Hybrid</td><td>335.500.000</td></tr>
+                        <tr><td>Grand Vitara</td><td>GLX Hybrid</td><td>433.750.000</td></tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 12px; margin-top: 12px;">*Harga belum termasuk diskon promo. Untuk pembelian fleet/ambulans, hubungi marketing.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="config" class="section">
+    <div class="container">
+        <h2 class="section-title">⚙️ Konfigurasi Mobil Impianmu</h2>
+        <div class="configurator">
+            <div class="form-group">
+                <label>Pilih Model Suzuki (OTR Jatim)</label>
+                <select id="carModelSelect">
+                    <option value="New Carry FD AC PS" data-price="201500000">New Carry FD AC PS - Rp 201,5 Juta</option>
+                    <option value="S-Presso AGS" data-price="202000000">S-Presso AGS Matic - Rp 202 Juta</option>
+                    <option value="Ertiga GX Hybrid AT" data-price="291000000">Ertiga GX Hybrid (Matic) - Rp 291 Juta</option>
+                    <option value="Ertiga GL MT" data-price="274000000">Ertiga GL (Manual) - Rp 274 Juta</option>
+                    <option value="XL7 Alpha Hybrid" data-price="335500000">XL7 Alpha Hybrid - Rp 335,5 Juta</option>
+                    <option value="Grand Vitara GLX Hybrid" data-price="433750000">Grand Vitara GLX Hybrid - Rp 433,75 Juta</option>
+                </select>
+            </div>
+            <div class="config-result">
+                <p>Estimasi Harga (OTR Jawa Timur):</p>
+                <div class="total-price" id="totalPriceDisplay">Rp 0</div>
+                <p style="margin-top: 8px;">*Belum termasuk diskon promo. Hubungi kami untuk penawaran terbaik.</p>
+                <button class="btn-wa-config" id="configWaBtn">💬 Konsultasi Konfigurasi Ini</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="konsultasi" class="section">
+    <div class="container konsultasi-section">
+        <h2 style="font-size: 1.8rem;">📞 Butuh bantuan pilih mobil?</h2>
+        <p>Klik tombol di bawah untuk langsung chat dengan Firman Aditama (Marketing Suzuki). Dapatkan penawaran spesial!</p>
+        <a href="https://wa.me/6282331723917?text=Halo%20Suzuki%20Buana%20Indomobil%2C%20saya%20tertarik%20untuk%20konsultasi%20mobil.%20Minta%20info%20promo%20terbaru%20dong." target="_blank" class="wa-big-btn">
+            💬 Chat Konsultasi Gratis
+        </a>
+        <p style="margin-top: 20px;">atau isi formulir cepat (akan redirect ke WA)</p>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap;">
+            <input type="text" id="waName" placeholder="Nama Anda" style="width: auto; min-width: 160px; padding: 10px; border-radius: 30px; border:1px solid #ccc;">
+            <input type="text" id="waPhone" placeholder="No. HP" style="width: auto; padding: 10px; border-radius: 30px; border:1px solid #ccc;">
+            <button id="quickWaBtn" class="btn-primary" style="background: #25D366;">Kirim ke WA</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Suzuki Buana Indomobil Trada - Kenjeran, Surabaya. Melayani OTR Jawa Timur & pengadaan mobil operasional.</p>
+    </div>
+</footer>
+
+<script>
+    // Semua kode dibungkus dalam event DOMContentLoaded agar aman
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tombol detail mobil
+        const detailBtns = document.querySelectorAll('.btn-detail');
+        detailBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const model = this.getAttribute('data-model');
+                const waUrl = `https://wa.me/6282331723917?text=Halo%20saya%20tertarik%20dengan%20${encodeURIComponent(model)}.%20Minta%20info%20test%20drive%20dan%20promo.`;
+                window.open(waUrl, '_blank');
+            });
+        });
+
+        // Brosur download
+        const brosurBtn = document.getElementById('downloadBrochureBtn');
+        if (brosurBtn) {
+            brosurBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Hubungi Firman Aditama di WA 082331723917 untuk mendapatkan brosur resmi Suzuki terbaru.');
+            });
+        }
+
+        // Toggle price list
+        const priceBtn = document.getElementById('showPriceListBtn');
+        const priceDiv = document.getElementById('priceListContainer');
+        if (priceBtn && priceDiv) {
+            priceBtn.addEventListener('click', function() {
+                if (priceDiv.style.display === 'none') {
+                    priceDiv.style.display = 'block';
+                } else {
+                    priceDiv.style.display = 'none';
+                }
+            });
+        }
+
+        // Konfigurasi harga
+        const carSelect = document.getElementById('carModelSelect');
+        const totalDisplay = document.getElementById('totalPriceDisplay');
+        if (carSelect && totalDisplay) {
+            function updatePrice() {
+                const selected = carSelect.options[carSelect.selectedIndex];
+                const price = parseInt(selected.getAttribute('data-price')) || 0;
+                totalDisplay.innerText = 'Rp ' + price.toLocaleString('id-ID');
+            }
+            carSelect.addEventListener('change', updatePrice);
+            updatePrice();
+        }
+
+        // Tombol WA konfigurasi
+        const configWaBtn = document.getElementById('configWaBtn');
+        if (configWaBtn) {
+            configWaBtn.addEventListener('click', function() {
+                const selectedCar = carSelect.options[carSelect.selectedIndex].text;
+                const total = totalDisplay.innerText;
+                const msg = `Halo%20kak%2C%20saya%20tertarik%20dengan%20konfigurasi%3A%0A- Model%3A%20${encodeURIComponent(selectedCar)}%0A- Estimasi%20Harga%20OTR%3A%20${encodeURIComponent(total)}%0A%0AMohon%20info%20promo%20dan%20test%20drive.`;
+                window.open(`https://wa.me/6282331723917?text=${msg}`, '_blank');
+            });
+        }
+
+        // Form cepat WA
+        const quickBtn = document.getElementById('quickWaBtn');
+        if (quickBtn) {
+            quickBtn.addEventListener('click', function() {
+                let name = document.getElementById('waName').value.trim();
+                let phone = document.getElementById('waPhone').value.trim();
+                if (!name) name = 'Calon Konsumen';
+                const text = `Halo%2C%20saya%20${encodeURIComponent(name)}.%20Saya%20tertarik%20dengan%20mobil%20Suzuki.%20Bisa%20minta%20info%20promo%20terbaru%3F%20No.%20saya%20${encodeURIComponent(phone)}`;
+                window.open(`https://wa.me/6282331723917?text=${text}`, '_blank');
+            });
+        }
+    });
+</script>
+</body>
+</html>
